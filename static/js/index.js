@@ -14,9 +14,9 @@ const issue = async (data ) => {
         });
 
         const responseData = await response.json();
-        console.log(responseData)
+
         if (responseData.issue_id) {
-            console.log('Book issued!');
+            alert('Book issued!');
             window.setTimeout(() => {
                 location.assign('/books');
             }, 1500);
@@ -40,7 +40,7 @@ const take_return = async (data) => {
         const responseData = await response.json();
 
         if (responseData) {
-            console.log('Book returned!');
+            alert('Book returned!');
             window.setTimeout(() => {
                 location.assign('/books');
             }, 1500);
@@ -65,7 +65,7 @@ const add_member = async (data) => {
         const responseData = await response.json();
 
         if (responseData) {
-            console.log('Member Added!');
+            alert('Member Added!');
             window.setTimeout(() => {
                 location.assign('/books');
             }, 1500);
@@ -90,7 +90,6 @@ if(issueForm) {
             member_id,
             issue_date
         }
-        console.log(data)
         issue(data);
     })
 }

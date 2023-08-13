@@ -1,6 +1,7 @@
 from flask import Flask
 from database import db
 from models.marshmallow import ma
+from urllib.parse import quote
 
 from controllers.book_controller import book_bp
 from controllers.member_controller import member_bp
@@ -13,7 +14,7 @@ from views.view_member import view_member_bp
 app = Flask(__name__)
 
 # Configure the SQLAlchemy databases
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://harry:7coZeoO1Zc19PGOsRJdFqCYbLwsrndSy@dpg-cjb7rc2nip6c73db0bmg-a/frappe_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:%s@localhost:3306/frappe_db' %quote('harshitmishra831@')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)

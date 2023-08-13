@@ -8,9 +8,9 @@ import requests
 
 data_import = Blueprint('data_import', __name__)
 
-@data_import.route('/api/fetch-frappe-library', methods=['GET'])
-def fetch_api():
-   api_url = "https://frappe.io/api/method/frappe-library"
+@data_import.route('/api/fetch-frappe-library/<string:page>', methods=['GET'])
+def fetch_api(page):
+   api_url = f"https://frappe.io/api/method/frappe-library?page={page}"
 
    try:
         response = requests.get(api_url)
@@ -34,7 +34,7 @@ def fetch_api():
            db.session.add(new_book)
 
         db.session.commit()           
-        return book_schema.jsonify(new_book), 201
+        return jsonify({"message": "Book added into the database!"})
    
    except Exception as e:
       return jsonify({"error": e}), 400

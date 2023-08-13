@@ -23,7 +23,8 @@ body {
   h6 {
     font-family: "Raleway", sans-serif;
   }
-  
+
+ 
 
 #hero {
     width: 100%;
@@ -70,15 +71,28 @@ body {
     color: #eee;
     margin-bottom: 50px;
     font-size: 24px;
+    font-style: italic;
   }
-  
+  .fantasy{
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    text-transform: uppercase;
+    text-shadow:
+    1px 1px 1px red,
+    2px 2px 1px red;
+    letter-spacing: 2px; 
+    font-family: fantasy;
+    color: #fff;
+  }
   #hero .btn-get-started {
     font-family: "Open Sans", sans-serif;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 14px;
     display: inline-block;
-    padding: 10px 35px 10px 35px;
+    padding: 10px 85px 10px 85px;
     border-radius: 4px;
     transition: 0.5s;
     color: #fff;
@@ -132,3 +146,17 @@ body {
       margin-bottom: 30px;
     }
   }
+
+  .d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-left {
+    margin-right: 10px; /* Add some space between the buttons */
+}
+
+.btn-right {
+    margin-left: 10px; /* Add some space between the buttons */
+}
+  

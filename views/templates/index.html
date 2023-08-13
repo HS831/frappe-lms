@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frappe LMS</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-16x16.png">
+    <link rel="manifest" href="static/images/site.webmanifest">
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
 </head>
 <body>
     <section id="hero">
         <div class="hero-container">
-          <h1>Welcome to Frappe LMS</h1>
+          <h1>Welcome to <section class="fantasy">Frappe LMS</section></h1>
           <h2>A one stop online library management system for you.</h2>
-          <div class="d-flex">
-            <a href="/books" class="btn-get-started scrollto">Explore books</a>
+          <div class="d-flex justify-content-center">
+            <a href="/books" class="btn-get-started scrollto btn-left">Explore books</a>
+            <a href="/api/fetch-frappe-library/25" class="btn-get-started scrollto btn-right">Import Books</a>
           </div>
         </div>
       </section>

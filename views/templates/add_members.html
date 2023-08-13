@@ -4,14 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Member</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-16x16.png">
+    <link rel="manifest" href="static/images/site.webmanifest">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    
 </head>
-<body>
-    <header class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <h1>Add a member</h1>
+<body class="bg-secondary bg-gradient">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold" href="#">Add Member</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse justify-content-end d-grid gap-2 d-md-block" id="navbarSupportedContent">
+            <form class="d-flex" action="{{url_for('view_book_bp.return_book')}}" method="GET">
+              <button class="btn btn-primary" type="submit">Take Return</button>
+            </form>
+            <form class="d-flex" action="{{url_for('view_member_bp.add_members')}}" method="GET">
+                <button class="btn btn-primary" type="submit">Add Member</button>
+            </form>
+          </div>
         </div>
-    </header>
+      </nav>
 
     <main class="container mt-4">
         <section>
@@ -19,7 +36,25 @@
                 <div class="card-body">
                     <h5 class="card-title">Add a Member</h5>
                     <form action="/" method="GET" class="add_member--form">
-                        <div class="mb-3">
+
+
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <label for="issue"  class="form-label">Member ID</label>
+                                <input type="text" class="form-control" id="member_id" name="member_id"  required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="book">Name</label>
+                                <input type="text" class="form-control"  id="name" name="name"  required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="member">Email ID</label>
+                                <input type="text" class="form-control"  id="email_id" name="email_id" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add member</button>
+<!--
+<div class="mb-3">
                             <label for="issue" class="form-label">Member ID</label>
                             <input type="text" class="form-control" id="member_id" name="member_id" required>
                         </div>
@@ -33,14 +68,37 @@
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Add member</button>
+-->
                     </form>
                 </div>
             </div>
         </section>
     </main>
-
+    
+    
     <script src="{{ url_for('static', filename='js/index.js') }}" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>// Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+          'use strict'
+        
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.querySelectorAll('.needs-validation')
+        
+          // Loop over them and prevent submission
+          Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+              form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }
+        
+                form.classList.add('was-validated')
+              }, false)
+            })
+        })()
+    </script>
 </body>
 </html>
