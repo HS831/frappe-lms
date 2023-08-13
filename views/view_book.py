@@ -12,7 +12,7 @@ view_book_bp = Blueprint('view_book_bp', __name__, template_folder='templates', 
 def get_books():
     protocol = request.scheme
     hostname = request.host.split(':')[0]
-    port = request.host.split(':')[1]
+    # port = request.host.split(':')[1]
 
     api_url = f"{protocol}://{hostname}:{port}/api/books"
 
@@ -28,7 +28,7 @@ def get_books():
 def get_book(book_id):
     protocol = request.scheme
     hostname = request.host.split(':')[0]
-    port = request.host.split(':')[1]
+    # port = request.host.split(':')[1]
 
     api_url = f"{protocol}://{hostname}:{port}/api/books/{book_id}"
 
