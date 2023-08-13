@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} - Book Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <h1>{{ book.title }}</h1>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        <section class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/book-cover.jpg') }}" class="card-img-top">
+                </div>
+            </div>
+            <div class="col-md-8 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">Authors: {{ book.authors }}</p>
+                        <p class="card-text">ISBN: {{ book.isbn }}</p>
+                        <p class="card-text">Published: {{ book.publication_date }}</p>
+                        <p class="card-text">Average Rating: {{ book.average_rating }}</p>
+                        <p class="card-text">Ratings count: {{ book.ratings_count }}</p>
+                        <p class="card-text">Number of Pages: {{book.num_pages}}</p>
+                        <p class="card-text">Language Code: {{book.language_code}}</p>
+                        <p class="card-text">Text reviews count: {{book.text_reviews_count}}</p>
+                        <p class="card-text">Publisher: {{book.publisher}}</p>
+                    </div>
+                </div>
+                <form action="{{url_for('view_book_bp.issue_book_render')}}" method="GET">
+                    <Button type="submit" class="btn btn-primary mt-4">Issue Book</Button>
+                </form>
+            </div>
+            
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
