@@ -13,8 +13,8 @@ def get_books():
     protocol = request.scheme
     hostname = request.host.split(':')[0]
     # port = request.host.split(':')[1]
-
-    api_url = f"{protocol}://{hostname}:{port}/api/books"
+    print(protocol, hostname)
+    api_url = f"{protocol}://{hostname}/api/books"
 
     try:
         response = requests.get(api_url)
@@ -30,7 +30,7 @@ def get_book(book_id):
     hostname = request.host.split(':')[0]
     # port = request.host.split(':')[1]
 
-    api_url = f"{protocol}://{hostname}:{port}/api/books/{book_id}"
+    api_url = f"{protocol}://{hostname}/api/books/{book_id}"
 
     try:
         response = requests.get(api_url)
