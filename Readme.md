@@ -52,6 +52,8 @@ Below are screenshots showcasing the different pages and functionalities of the 
 
 To set up the Library Management System locally, follow these steps:
 
+```
+
 1. Clone the repository:
     git clone https://github.com/HS831/frappe-lms.git
     cd frappe-lms
@@ -64,6 +66,8 @@ To set up the Library Management System locally, follow these steps:
 
 4. Start the application on localhost:5000
     python app.py
+
+```
 
 
 ## Usage
