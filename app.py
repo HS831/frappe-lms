@@ -13,7 +13,7 @@ from views.view_member import view_member_bp
 app = Flask(__name__)
 
 # Configure the SQLAlchemy databases
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://harry:7coZeoO1Zc19PGOsRJdFqCYbLwsrndSy@dpg-cjb7rc2nip6c73db0bmg-a.oregon-postgres.render.com/frappe_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://harry:7coZeoO1Zc19PGOsRJdFqCYbLwsrndSy@dpg-cjb7rc2nip6c73db0bmg-a/frappe_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
