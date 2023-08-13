@@ -3,3 +3,4 @@ flask-mysqldb==0.2.0
 flask-sqlalchemy
 flask-marshmallow
 marshmallow-sqlalchemy
+requests
