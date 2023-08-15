@@ -7,3 +7,4 @@ marshmallow-sqlalchemy
 requests
 psycopg2
 gunicorn
+python-dotenv
