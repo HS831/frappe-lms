@@ -1,20 +1,29 @@
 from flask import Flask, request, Blueprint, render_template, jsonify
+from dotenv import load_dotenv
 from models.books import book_schema, Book
 
 from database import db
 from models.marshmallow import ma
 
 import requests
+import os
 
+load_dotenv()
 view_book_bp = Blueprint('view_book_bp', __name__, template_folder='templates', url_prefix='/books')
 
 @view_book_bp.route('/', methods=['GET'])
 def get_books():
     protocol = request.scheme
     hostname = request.host.split(':')[0]
-    port = request.host.split(':')[1]
     
-    api_url = f"{protocol}://{hostname}:{port}/api/books"
+    print(os.getenv('ENV'))
+
+    if(os.getenv('ENV') == "DEV"):
+        port = request.host.split(':')[1]
+        api_url = f"{protocol}://{hostname}:{port}/api/books"
+    else:
+        api_url = f"{protocol}://{hostname}/api/books"
+        
 
     try:
         response = requests.get(api_url)
@@ -28,9 +37,12 @@ def get_books():
 def get_book(book_id):
     protocol = request.scheme
     hostname = request.host.split(':')[0]
-    port = request.host.split(':')[1]
 
-    api_url = f"{protocol}://{hostname}:{port}/api/books/{book_id}"
+    if(os.getenv('ENV') != 'DEV'):
+        port = request.host.split(':')[1]
+        api_url = f"{protocol}://{hostname}:{port}/api/books{book_id}"
+    else:
+        api_url = f"{protocol}://{hostname}/api/books{book_id}"
 
     try:
         response = requests.get(api_url)
@@ -48,9 +60,12 @@ def issue_book_render():
 def view_issued_books():
     protocol = request.scheme
     hostname = request.host.split(':')[0]
-    port = request.host.split(':')[1]
     
-    api_url = f"{protocol}://{hostname}:{port}/api/books/issueBook"
+    if(os.getenv('ENV') != 'DEV'):
+        port = request.host.split(':')[1]
+        api_url = f"{protocol}://{hostname}:{port}/api/issueBook"
+    else:
+        api_url = f"{protocol}://{hostname}/api/issueBook"
 
     try:
         response = requests.get(api_url)
