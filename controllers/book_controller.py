@@ -104,6 +104,23 @@ def issue_book():
   else:
      return jsonify({"message": "No such member found"})
   
+@book_bp.route('/api/books/issueBook', methods = ['GET'])
+def get_all_issued_books():
+   issued_books = IssuedBook.query.all()
+
+   issuedBookList = []
+   for issued_book in issued_books:
+    issuedBookList.append({
+      'issue_id': issued_book.issue_id,
+      'book_id': issued_book.book_id,
+      'member_id': issued_book.member_id,
+      'issue_date': issued_book.issue_date,
+      'return_date': issued_book.return_date,
+      'rent_fee': issued_book.rent_fee
+    })
+
+   return jsonify({"data": issuedBookList})
+  
   
 @book_bp.route('/api/books/issueReturn', methods=['POST'])
 def issue_return():

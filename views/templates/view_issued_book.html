@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issued Books Data</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body >
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold" href="/">Frappe LMS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse justify-content-end d-grid gap-2 d-md-block" id="navbarSupportedContent">
+            <form class="d-flex" action="{{url_for('view_book_bp.return_book')}}" method="GET">
+              <button class="btn btn-primary" type="submit">Take Return</button>
+            </form>
+            <form class="d-flex" action="{{url_for('view_member_bp.add_members')}}" method="GET">
+                <button class="btn btn-primary" type="submit">Add Member</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <div class="container mt-5">
+        <h1 class="mb-4">Issued Books Data</h1>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Issue ID</th>
+                    <th>Book ID</th>
+                    <th>Member ID</th>
+                    <th>Issue Date</th>
+                    <th>Return Date</th>
+                    <th>Rent Fee</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for issued in issued_books %}
+                <tr>
+                    <td>{{ issued.issue_id }}</td>
+                    <td>{{ issued.book_id }}</td>
+                    <td>{{ issued.member_id }}</td>
+                    <td>{{ issued.issue_date }}</td>
+                    <td>{{ issued.return_date }}</td>
+                    <td>{{ issued.rent_fee }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

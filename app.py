@@ -1,4 +1,5 @@
 from flask import Flask
+from dotenv import load_dotenv
 from database import db
 from models.marshmallow import ma
 from urllib.parse import quote
@@ -11,10 +12,16 @@ from views.view_book import view_book_bp
 from views.views import view_index
 from views.view_member import view_member_bp
 
+import os
+
 app = Flask(__name__)
 
+load_dotenv()
+
 # Configure the SQLAlchemy databases
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:%s@localhost:3306/frappe_db' %quote('harshitmishra831@')
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:%s@localhost:3306/frappe_db' %quote('harshitmishra831@')
+DATABASE_URL = os.getenv("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)

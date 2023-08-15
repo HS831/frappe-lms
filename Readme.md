@@ -74,10 +74,6 @@ To set up the Library Management System locally, follow these steps:
 
 Once the application is set up and running, you can access the different functionalities through your web browser. Use the navigation menu to explore books, view book details, manage members, and process book borrowing and returns.
 
-## Contributing
-
-Contributions to the Library Management System are welcome! If you'd like to contribute, please follow the standard GitHub pull request process.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).

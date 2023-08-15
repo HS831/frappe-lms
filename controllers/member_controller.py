@@ -20,3 +20,18 @@ def add_member():
   db.session.commit()
 
   return member_schema.jsonify(new_member), 201
+
+@member_bp.route('/api/members', methods=['GET'])
+def get_all_members():
+  members = Member.query.all()
+
+  memberList = []
+  for member in members:
+    memberList.append({
+      'member_id': member.member_id,
+      'name': member.name,
+      'email': member.email,
+      'outstanding_debt': member.outstanding_debt
+    })
+
+  return jsonify({"data": memberList})

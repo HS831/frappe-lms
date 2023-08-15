@@ -44,6 +44,22 @@ def get_book(book_id):
 def issue_book_render():
     return render_template('issue_book.html')
 
+@view_book_bp.route('/issue/view', methods=['GET'])
+def view_issued_books():
+    protocol = request.scheme
+    hostname = request.host.split(':')[0]
+    port = request.host.split(':')[1]
+    
+    api_url = f"{protocol}://{hostname}:{port}/api/books/issueBook"
+
+    try:
+        response = requests.get(api_url)
+        issue_books_data = response.json().get('data', [])
+        
+        return render_template('view_issued_book.html', issued_books=issue_books_data)
+    except Exception as e:
+        return str(e)
+
 @view_book_bp.route('/return', methods=['GET'])
 def return_book():
     return render_template('return_book.html')
